@@ -1,5 +1,5 @@
 # Team-WeCan
-BootCamp WeCan 팀
+BoostCamp WeCan 팀
 
 ## 과제 제출
 
