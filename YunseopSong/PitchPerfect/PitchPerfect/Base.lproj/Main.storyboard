@@ -46,34 +46,40 @@
                                     <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2gU-sF-791"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBG-5k-PjG">
-                                <rect key="frame" x="163" y="577" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STATUS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQ1-D2-Qml">
+                                <rect key="frame" x="15" y="626" width="345" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아래 버튼을 누른채로 말해보세요!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zu0-rQ-7zn">
+                                <rect key="frame" x="15" y="526" width="345" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBG-5k-PjG">
+                                <rect key="frame" x="15" y="576" width="345" height="30"/>
                                 <state key="normal" title="NAVER"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQ1-D2-Qml">
-                                <rect key="frame" x="110" y="626" width="155" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zu0-rQ-7zn">
-                                <rect key="frame" x="108" y="536" width="158" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="zu0-rQ-7zn" firstAttribute="width" secondItem="PQ1-D2-Qml" secondAttribute="width" id="8qA-cC-9dB"/>
+                            <constraint firstItem="aBG-5k-PjG" firstAttribute="centerX" secondItem="PQ1-D2-Qml" secondAttribute="centerX" id="HFe-0y-Nu8"/>
                             <constraint firstItem="la7-9k-Gbv" firstAttribute="centerX" secondItem="xIr-FO-1qu" secondAttribute="centerX" id="JXQ-NW-WpE"/>
                             <constraint firstItem="xIr-FO-1qu" firstAttribute="top" secondItem="rb3-xS-aHL" secondAttribute="bottom" constant="7" id="X4i-an-3Vc"/>
                             <constraint firstItem="la7-9k-Gbv" firstAttribute="top" secondItem="xIr-FO-1qu" secondAttribute="bottom" constant="8" id="Xdk-I4-wON"/>
                             <constraint firstItem="rb3-xS-aHL" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="a7p-Jg-hAI"/>
+                            <constraint firstItem="zu0-rQ-7zn" firstAttribute="centerX" secondItem="PQ1-D2-Qml" secondAttribute="centerX" id="bxW-7r-Ktb"/>
+                            <constraint firstItem="PQ1-D2-Qml" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="g3s-cs-ySn"/>
+                            <constraint firstItem="zu0-rQ-7zn" firstAttribute="top" secondItem="PQ1-D2-Qml" secondAttribute="top" constant="-100" id="lZB-v3-ddN"/>
+                            <constraint firstItem="aBG-5k-PjG" firstAttribute="top" secondItem="PQ1-D2-Qml" secondAttribute="top" constant="-50" id="lwh-rz-KgR"/>
+                            <constraint firstItem="aBG-5k-PjG" firstAttribute="width" secondItem="PQ1-D2-Qml" secondAttribute="width" id="o2R-pa-hfr"/>
                             <constraint firstItem="xIr-FO-1qu" firstAttribute="centerX" secondItem="rb3-xS-aHL" secondAttribute="centerX" id="puA-Mt-VbR"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PQ1-D2-Qml" secondAttribute="bottom" constant="20" id="tKE-ys-Dt6"/>
                             <constraint firstItem="rb3-xS-aHL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wse-Ih-6LZ"/>
+                            <constraint firstItem="PQ1-D2-Qml" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="-30" id="xTM-Du-7Pr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="SBI-ms-el1"/>

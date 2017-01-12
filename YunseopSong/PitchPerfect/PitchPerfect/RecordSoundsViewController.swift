@@ -23,9 +23,9 @@ open class Languages {
         return self.languages.count
     }
     open var selectedLanguageString: String {
-//        if let language = self.languages[self._selectedLanguage] {
-//            return language
-//        }
+        if let language = self.languages[self._selectedLanguage] {
+            return language
+        }
         return "Korean"
     }
     open var selectedLanguage: NSKRecognizerLanguageCode {
@@ -148,11 +148,9 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             self.speechRecognizer.stop()
         }
     }
-
-    
-    
     
 }
+
 /*
  * NSKRecognizerDelegate protocol 구현부
  */
@@ -174,9 +172,9 @@ extension RecordSoundsViewController: NSKRecognizerDelegate {
     public func recognizerDidEnterInactive(_ aRecognizer: NSKRecognizer!) {
         print("Event occurred: Inactive")
         
-        self.setRecognitionButtonTitle(withText: "Record", color: .blue)
+        self.setRecognitionButtonTitle(withText: "NAVER", color: .blue)
         self.naverButton.isEnabled = true
-        self.statusLabel.text = ""
+        self.statusLabel.text = "STATUS"
         try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategorySoloAmbient)
     }
     
@@ -207,51 +205,8 @@ extension RecordSoundsViewController: NSKRecognizerDelegate {
     }
 }
 
-
-//extension RecordSoundsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-//    
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        return 1
-//    }
-//    
-//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        return self.languages.count
-//    }
-//    
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        return languages.languageString(at: row)
-//    }
-//    
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        languages.selectLanguage(at: row)
-//        languagePickerButton.setTitle(languages.selectedLanguageString, for: .normal)
-//        self.pickerView.isHidden = true
-//        
-//        /*
-//         * 음성인식 중 언어를 변경하게 되면 음성인식을 즉시 중지(cancel()) 합니다.
-//         * 음성인식이 즉시 중지되면 별도의 delegate method가 호출되지 않습니다.
-//         */
-//        if self.speechRecognizer.isRunning {
-//            self.speechRecognizer.cancel()
-//            self.recognitionResultLabel.text = "Canceled"
-//            self.setRecognitionButtonTitle(withText: "Record", color: .blue)
-//            self.naverButton.isEnabled = true
-//            try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategorySoloAmbient)
-//        }
-//    }
-//}
-
-
 fileprivate extension RecordSoundsViewController {
-    
-//    func setupLanguagePicker() {
-//        self.view.addSubview(self.pickerView)
-//        self.pickerView.dataSource = self
-//        self.pickerView.delegate = self
-//        self.pickerView.showsSelectionIndicator = true
-//        self.pickerView.backgroundColor = UIColor.white
-//        self.pickerView.isHidden = true
-//    }
+
     
     func setupRecognitionButton() {
         let longpressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(naverButtonPressed(_:)))
