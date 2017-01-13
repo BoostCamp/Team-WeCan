@@ -30,4 +30,5 @@
 
 -오디오 재생 시간과 진행사항 확인
 
-
+##영상
+[영상](https://github.com/BoostCamp/Team-WeCan/blob/master/JanghoHan/video/video.mov)
