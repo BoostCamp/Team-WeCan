@@ -5,12 +5,11 @@
 //  Created by Seungwook Jeong on 2017. 1. 10..
 //  Copyright © 2017년 boostcamp. All rights reserved.
 //
-
 import UIKit
 import AVFoundation
 
 class PlaySoundsViewController: UIViewController {
-
+    
     var recordedAudioURL : URL!
     var audioFile: AVAudioFile!
     var audioEngine: AVAudioEngine!
@@ -67,7 +66,7 @@ class PlaySoundsViewController: UIViewController {
         let filePath = URL(string: pathArray.joined(separator: "/"))
         
         let url = [filePath]
-       
+        
         let activityViewController = UIActivityViewController(activityItems: url, applicationActivities: nil)
         
         activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
@@ -80,24 +79,24 @@ class PlaySoundsViewController: UIViewController {
     }
     
     
-   /*
-    @IBAction func showAlert(_ sender: Any) {
-        let alertController = UIAlertController(title : "Custom Vocie", message:"원하는 목소리를 만들어 보세요", preferredStyle: .actionSheet)
-        
-        
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        
-        let cancelAction = UIAlertAction(title: "Cancle", style: .cancel)
-        
-        alertController.addAction(okAction)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true, completion: nil)
-    }
-    */
+    /*
+     @IBAction func showAlert(_ sender: Any) {
+     let alertController = UIAlertController(title : "Custom Vocie", message:"원하는 목소리를 만들어 보세요", preferredStyle: .actionSheet)
+     
+     
+     let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+     
+     let cancelAction = UIAlertAction(title: "Cancle", style: .cancel)
+     
+     alertController.addAction(okAction)
+     alertController.addAction(cancelAction)
+     present(alertController, animated: true, completion: nil)
+     }
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAudio()
-        //customPlayButton.isEnabled = false
+        customPlayButton.isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,7 +105,7 @@ class PlaySoundsViewController: UIViewController {
         configureUI(.notPlaying)
         
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
-       
+        
         if(appDelegate?.paramPitchValue) != nil {
             customPlayButton.isEnabled = true
             
@@ -119,7 +118,7 @@ class PlaySoundsViewController: UIViewController {
             print(pitchVal)
             rateValue = (appDelegate?.paramRateValue)!
         }
-
+        
         if let echoVal = appDelegate?.paramEcho {
             print(echoVal)
             isEcho = (appDelegate?.paramEcho)!
@@ -128,23 +127,22 @@ class PlaySoundsViewController: UIViewController {
             print(reverbVal)
             isReverb = (appDelegate?.paramReverb)!
         }
-
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
