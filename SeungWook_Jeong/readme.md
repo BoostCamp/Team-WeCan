@@ -8,8 +8,8 @@
 ##기본기능
 
 ---
-Pitch, Rate를 조절하여 음성 변조
-Echo, Reverb 효과를 이용한 음성 변조
+- Pitch, Rate를 조절하여 음성 변조
+- Echo, Reverb 효과를 이용한 음성 변조
 
 
 ##추가기능
