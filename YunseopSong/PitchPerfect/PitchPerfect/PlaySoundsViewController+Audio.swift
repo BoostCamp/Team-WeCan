@@ -30,7 +30,7 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
 
     // MARK: PlayingState (raw values correspond to sender tags)
 
-    enum PlayingState { case playing, notPlaying, pause }
+    enum PlayingState { case playing, notPlaying, pause, restart }
 
     // MARK: Audio Functions
 
@@ -38,8 +38,7 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
         // initialize (recording) audio file
         do {
             audioFile = try AVAudioFile(forReading: recordedAudioURL as URL)
-            print(audioFile.length)
-            testVal = audioFile.length
+            totalTime = Double(self.audioFile.length) / Double(self.audioFile.processingFormat.sampleRate)
             
         } catch {
             showAlert(Alerts.AudioFileError, message: String(describing: error))
@@ -98,15 +97,17 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
 
                 if let rate = rate {
                     delayInSeconds = Double(self.audioFile.length - playerTime.sampleTime) / Double(self.audioFile.processingFormat.sampleRate) / Double(rate)
+                    
                 } else {
                     delayInSeconds = Double(self.audioFile.length - playerTime.sampleTime) / Double(self.audioFile.processingFormat.sampleRate)
                 }
             }
-            
-
+            self.totalTime = delayInSeconds
             // schedule a stop timer for when audio finishes playing
             self.stopTimer = Timer(timeInterval: delayInSeconds, target: self, selector: #selector(PlaySoundsViewController.stopAudio), userInfo: nil, repeats: false)
             RunLoop.main.add(self.stopTimer!, forMode: RunLoopMode.defaultRunLoopMode)
+            
+
         }
 
         do {
@@ -117,25 +118,11 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
         }
         audioPlayerNode.play()
         
+        
+               
     }
 
     func stopAudio() {
-        
-        if let lastRenderTime: AVAudioTime = self.audioPlayerNode.lastRenderTime{
-            if let playerTime: AVAudioTime = self.audioPlayerNode.playerTime(forNodeTime: lastRenderTime) {
-                currentTime = playerTime
-                print(currentTime.sampleTime)
-                print(Double(currentTime.sampleTime) / currentTime.sampleRate)
-                print(Double(testVal) / currentTime.sampleRate)
-                print(audioFile.framePosition)
-                
-            }
-            
-        }
-        
-        
-
-
         if let audioPlayerNode = audioPlayerNode {
             audioPlayerNode.stop()
         }
@@ -167,12 +154,20 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
         case .playing:
             setPlayButtonsEnabled(false)
             setStopButtonEnabled(true)
+            playButton.isEnabled = false
         case .notPlaying:
             setPlayButtonsEnabled(true)
             setStopButtonEnabled(false)
+            playButton.isEnabled = false
+
         case .pause:
             setPlayButtonsEnabled(false)
             playButton.isEnabled = true
+            pauseButton.isEnabled = false
+        case .restart:
+            setPlayButtonsEnabled(false)
+            playButton.isEnabled = false
+            pauseButton.isEnabled = true
 
         }
     }
@@ -213,44 +208,42 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
     
     
     func pauseAudio() {
-        if let lastRenderTime: AVAudioTime = self.audioPlayerNode.lastRenderTime{
-            if let playerTime: AVAudioTime = self.audioPlayerNode.playerTime(forNodeTime: lastRenderTime) {
-                currentTime = playerTime
-                print(Double(currentTime.sampleTime) / currentTime.sampleRate)
 
-            }
-
-        }
         if let audioPlayerNode = audioPlayerNode {
             audioPlayerNode.pause()
         }
         
-        if let stopTimer = stopTimer {
-            stopTimer.invalidate()
-        }
-        
-        configureUI(.pause)
 
         if let audioEngine = audioEngine {
             audioEngine.pause()
         }
         
+        configureUI(.pause)
+
+        
         
     }
     
     func playAudio() {
+        if let lastRenderTime: AVAudioTime = self.audioPlayerNode.lastRenderTime{
+            if let playerTime: AVAudioTime = self.audioPlayerNode.playerTime(forNodeTime: lastRenderTime) {
+                audioPlayerNode.scheduleFile(audioFile, at: playerTime) {
+                    
+                    var delayInSeconds: Double = 0
+                    
+                    if let lastRenderTime = self.audioPlayerNode.lastRenderTime, let playerTime = self.audioPlayerNode.playerTime(forNodeTime: lastRenderTime) {
+                        delayInSeconds = Double(self.audioFile.length - playerTime.sampleTime) / Double(self.audioFile.processingFormat.sampleRate)
+                    }
+                    
+                    self.stopTimer = Timer(timeInterval: delayInSeconds, target: self, selector: #selector(PlaySoundsViewController.stopAudio), userInfo: nil, repeats: false)
+                    RunLoop.main.add(self.stopTimer!, forMode: RunLoopMode.defaultRunLoopMode)
+                }
 
-        audioPlayerNode.scheduleFile(audioFile, at: currentTime) {
-            
-            var delayInSeconds: Double = 0
-            
-            if let lastRenderTime = self.audioPlayerNode.lastRenderTime, let playerTime = self.audioPlayerNode.playerTime(forNodeTime: lastRenderTime) {
-                delayInSeconds = Double(self.audioFile.length - playerTime.sampleTime) / Double(self.audioFile.processingFormat.sampleRate)
+                
             }
             
-            self.stopTimer = Timer(timeInterval: delayInSeconds, target: self, selector: #selector(PlaySoundsViewController.stopAudio), userInfo: nil, repeats: false)
-            RunLoop.main.add(self.stopTimer!, forMode: RunLoopMode.defaultRunLoopMode)
         }
+
         
         do {
             try audioEngine.start()
@@ -260,10 +253,6 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
         }
         
         audioPlayerNode.play()
-
-        
-        
-     
     }
     
 }

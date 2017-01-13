@@ -19,7 +19,6 @@ class PlaySoundsViewController: UIViewController {
     @IBOutlet weak var echoButton: UIButton!
     @IBOutlet weak var reverbButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
-    @IBOutlet weak var pitchSlider: UISlider!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var genderButton: UIButton!
@@ -30,10 +29,11 @@ class PlaySoundsViewController: UIViewController {
     var audioEngine:AVAudioEngine!
     var audioPlayerNode: AVAudioPlayerNode!
     var stopTimer: Timer!
-    var currentTime: AVAudioTime!
-    var testVal: Int64 = 1
     var resultGender: Int?
     var resultText: String?
+    var totalTime: Double!
+    var currentTime: Double!
+    var currentTimer: Timer!
     
     enum ButtonType: Int {
         case slow = 0, fast, chipmunk, vader, echo, reverb
@@ -61,11 +61,6 @@ class PlaySoundsViewController: UIViewController {
     @IBAction func stopButtonPressed(_ sender: AnyObject) {
         stopAudio()
     }
-
-    @IBAction func changePitchSlider(_ sender: UISlider) {
-        changePitch(sender.value)
-        
-    }
     
     @IBAction func pasueButtonPressed(_ sender: AnyObject) {
         pauseAudio()
@@ -83,9 +78,8 @@ class PlaySoundsViewController: UIViewController {
         } else {
             genderButton.setImage(UIImage(named: "female.png"), for: UIControlState.normal)
         }
-        print(resultView.text)
-        resultView.text = resultText!
-        print(resultView.text)
+        resultView.text = "\"\(resultText!)\""
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
