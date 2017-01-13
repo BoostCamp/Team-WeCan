@@ -30,36 +30,53 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rle-0f-Glt">
-                                <rect key="frame" x="133.5" y="419" width="107" height="21"/>
+                                <rect key="frame" x="133.5" y="419" width="107" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycd-VJ-yTW" userLabel="stop Recording Button">
-                                <rect key="frame" x="150" y="448" width="75" height="75"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="75" id="ags-FK-pTE"/>
-                                    <constraint firstAttribute="height" constant="75" id="vax-Qj-GrV"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" image="stopRecordButton"/>
-                                <connections>
-                                    <action selector="stopRecordingAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c4N-2Z-vbL"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8aO-9Y-PKH">
+                                <rect key="frame" x="112" y="451" width="150" height="75"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p5w-q5-OAe" userLabel="pause Recording Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="75" id="aoN-6U-sKB"/>
+                                            <constraint firstAttribute="width" constant="75" id="nBi-fI-bbY"/>
+                                        </constraints>
+                                        <state key="normal" image="pauseRecordButton"/>
+                                        <connections>
+                                            <action selector="pauseRecordingAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oDH-SK-T9c"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycd-VJ-yTW" userLabel="stop Recording Button">
+                                        <rect key="frame" x="75" y="0.0" width="75" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="75" id="ags-FK-pTE"/>
+                                            <constraint firstAttribute="height" constant="75" id="vax-Qj-GrV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" image="stopRecordButton"/>
+                                        <connections>
+                                            <action selector="stopRecordingAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c4N-2Z-vbL"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="rle-0f-Glt" firstAttribute="top" secondItem="VeA-C1-w1f" secondAttribute="bottom" constant="8" id="EX4-xp-pdt"/>
+                            <constraint firstItem="8aO-9Y-PKH" firstAttribute="top" secondItem="rle-0f-Glt" secondAttribute="top" constant="32" id="UoG-Qr-5at"/>
                             <constraint firstItem="VeA-C1-w1f" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="r0m-On-cDy"/>
+                            <constraint firstItem="8aO-9Y-PKH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="r4q-YB-sR3"/>
                             <constraint firstItem="VeA-C1-w1f" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sb2-JJ-1zu"/>
-                            <constraint firstItem="ycd-VJ-yTW" firstAttribute="top" secondItem="rle-0f-Glt" secondAttribute="bottom" constant="8" id="v5Z-dH-6C7"/>
                             <constraint firstItem="rle-0f-Glt" firstAttribute="centerX" secondItem="VeA-C1-w1f" secondAttribute="centerX" id="waz-SI-qBF"/>
-                            <constraint firstItem="ycd-VJ-yTW" firstAttribute="centerX" secondItem="rle-0f-Glt" secondAttribute="centerX" id="z3p-HX-RNi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="hmK-rE-9bb"/>
                     <connections>
+                        <outlet property="pauseRecordingButton" destination="p5w-q5-OAe" id="WcC-GS-3O2"/>
                         <outlet property="recordButton" destination="VeA-C1-w1f" id="Iyi-2x-UzE"/>
                         <outlet property="recordLabel" destination="rle-0f-Glt" id="yOV-Nc-vDy"/>
                         <outlet property="stopRecordingButton" destination="ycd-VJ-yTW" id="q5N-He-nDn"/>
@@ -152,7 +169,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="171.5" height="129.5"/>
                                                         <state key="normal" title="Customized Playing"/>
                                                         <state key="disabled" title="Customized Playing"/>
-                                                        <state key="selected" title="Custom Play"/>
+                                                        <state key="selected" title="Customized Playing"/>
                                                         <connections>
                                                             <action selector="playSoundForButton:" destination="0lS-Tg-t9p" eventType="touchUpInside" id="uSy-xe-Brs"/>
                                                         </connections>
@@ -367,6 +384,7 @@
         <image name="LowPitch" width="90" height="90"/>
         <image name="Reverb" width="90" height="90"/>
         <image name="Slow" width="90" height="90"/>
+        <image name="pauseRecordButton" width="155" height="155"/>
         <image name="recordButton" width="155" height="155"/>
         <image name="stopRecordButton" width="155" height="155"/>
     </resources>

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		FB69375C1E28108E00099C1C /* CustomPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCD70E51E27E39600C81815 /* CustomPlayViewController.swift */; };
-		FB69375E1E28C9D700099C1C /* PlaySoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB69375D1E28C9D700099C1C /* PlaySoundsViewController.swift */; };
 		FBCCC26A1E1A75670034AB2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCCC2691E1A75670034AB2F /* AppDelegate.swift */; };
 		FBCCC26C1E1A75670034AB2F /* RecordSoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCCC26B1E1A75670034AB2F /* RecordSoundsViewController.swift */; };
 		FBCCC26F1E1A75670034AB2F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBCCC26D1E1A75670034AB2F /* Main.storyboard */; };
@@ -19,7 +18,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FB69375D1E28C9D700099C1C /* PlaySoundsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaySoundsViewController.swift; path = "../../../Team-WeCan/SeungWook_Jeong/PlaySoundsViewController.swift"; sourceTree = "<group>"; };
 		FBCCC2661E1A75670034AB2F /* pitchPerfect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pitchPerfect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBCCC2691E1A75670034AB2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBCCC26B1E1A75670034AB2F /* RecordSoundsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSoundsViewController.swift; sourceTree = "<group>"; };
@@ -69,7 +67,6 @@
 				FBCCC2721E1A75670034AB2F /* LaunchScreen.storyboard */,
 				FBCCC2751E1A75670034AB2F /* Info.plist */,
 				FBCD70D41E2529B600C81815 /* PlaySoundsViewController.swift */,
-				FB69375D1E28C9D700099C1C /* PlaySoundsViewController.swift */,
 				FBCD70D91E268BD300C81815 /* playsoundsviewcontroller-audio.swift */,
 				FBCD70E51E27E39600C81815 /* CustomPlayViewController.swift */,
 			);
@@ -152,7 +149,6 @@
 				FBCD70D81E2684B200C81815 /* PlaySoundsViewController.swift in Sources */,
 				FBCCC26A1E1A75670034AB2F /* AppDelegate.swift in Sources */,
 				FBCD70DA1E268BD300C81815 /* playsoundsviewcontroller-audio.swift in Sources */,
-				FB69375E1E28C9D700099C1C /* PlaySoundsViewController.swift in Sources */,
 				FB69375C1E28108E00099C1C /* CustomPlayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +276,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.boostcamp.pitchPerfect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -292,6 +290,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.boostcamp.pitchPerfect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
