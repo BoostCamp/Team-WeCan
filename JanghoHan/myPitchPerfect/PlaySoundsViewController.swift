@@ -11,6 +11,8 @@ import AVFoundation
 
 class PlaySoundsViewController: UIViewController {
 
+    // MARK : IBOutlet
+    
     @IBOutlet weak var echoButton: UIButton!
     @IBOutlet weak var reverbButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
@@ -22,6 +24,8 @@ class PlaySoundsViewController: UIViewController {
     @IBOutlet weak var changeSpeedSlider: UISlider!
     @IBOutlet weak var playProgressView: UIProgressView!
     
+    
+    // MARK : variables
     
     var recordedAudioURL: URL!
     var audioFile: AVAudioFile!
@@ -42,6 +46,9 @@ class PlaySoundsViewController: UIViewController {
     let maxPitch : Float = 1000
     let minPitch : Float = -1000
     
+    
+    // MARK : Life Cycles
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -56,7 +63,10 @@ class PlaySoundsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func playButton(_ sender: Any) {
+    
+    // MARK : IBAction
+    // called when play button clicked
+    @IBAction func playButtonClicked(_ sender: Any) {
         print("playButton clicked")
         startButton.isEnabled = false
         if !pauseButton.isEnabled && !stopButton.isEnabled{
@@ -64,18 +74,52 @@ class PlaySoundsViewController: UIViewController {
             changedRate = changeSpeedSlider.value
             configureUI(.playing)
         }else{
-            resumeAudio(resumeTime: resumeTime)
+            resumeAudio()
+            //resumeAudio(resumeTime: resumeTime)
+        }
+    }
+
+    //called when stop button clicked
+    @IBAction func stopButtonClicked(_ sender: Any) {
+        stopAudio()
+    }
+
+    //called when pause button clicked
+    @IBAction func pauseButtonClicked(_ sender: Any) {
+        
+        //playProgressView.invalidate()
+        //resumeTime = 
+        pauseAudio()
+    }
+
+    //called when speedSlider moved
+    @IBAction func changeSpeedSlider(_ sender: UISlider) {
+    }
+
+    //called when pitchSlider moved
+    @IBAction func changePitchSlider(_ sender: UISlider) {
+    }
+
+    //called when echobutton clicked
+    @IBAction func echoButtonClicked(_ sender: UIButton) {
+        if sender.isSelected{
+            sender.isSelected = false
+        }else{
+            sender.isSelected = true
+        }
+        
+    }
+    
+    //called when reverbButton licked
+    @IBAction func reverbButtonClicked(_ sender: UIButton) {
+        if sender.isSelected{
+            sender.isSelected = false
+        }else{
+            sender.isSelected = true
         }
     }
     
-    @IBAction func stopButton(_ sender: Any) {
-        stopAudio()
-    }
-    
-    @IBAction func pauseButton(_ sender: Any) {
-        resumeTime = pauseAudio()
-    }
-    
+    //setting initial status
     func initPlay(){
         configureUI(.notPlaying)
         setupAudio()
@@ -88,34 +132,7 @@ class PlaySoundsViewController: UIViewController {
         playProgressView.progress = 0
         echoButton.isSelected = false
         reverbButton.isSelected = false
-
-    }
-    
-    func updateRecordTime(){
         
-    }
-    
-    @IBAction func changeSpeedSlider(_ sender: UISlider) {
-    }
-
-    @IBAction func changePitchSlider(_ sender: UISlider) {
-    }
-
-    @IBAction func echoButtonClicked(_ sender: UIButton) {
-        if sender.isSelected{
-            sender.isSelected = false
-        }else{
-            sender.isSelected = true
-        }
-        
-    }
-    
-    @IBAction func reverbButtonClicked(_ sender: UIButton) {
-        if sender.isSelected{
-            sender.isSelected = false
-        }else{
-            sender.isSelected = true
-        }
     }
     
     /*

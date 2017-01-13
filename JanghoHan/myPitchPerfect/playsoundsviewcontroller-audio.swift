@@ -29,7 +29,7 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
     
     // MARK: PlayingState (raw values correspond to sender tags)
     
-    enum PlayingState { case playing, notPlaying, pausePlaying }
+    enum PlayingState { case playing, notPlaying, pauseAndPlaying, pause }
     
     // MARK: Audio Functions
     
@@ -108,8 +108,10 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
             showAlert(Alerts.AudioEngineError, message: String(describing: error))
             return
         }
-        // play the recording!
         
+        
+        // init values and
+        // play the recording!
         duration = Float(audioFile.length)/(pivotRate * changeRatePitchNode.rate)
         endTimeLabel.text = String(format: "%.2f", duration)
         currentTimeLabel.text = "00:00"
@@ -118,11 +120,15 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
         pvTimer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updatePlayTime), userInfo: nil, repeats: true)
     }
     
+    // MARK : Update Play Time for playProgressView
+    
     func updatePlayTime(){
-        let curTime = currentTime()
+        let curTime = Float(currentTime())/changedRate
         currentTimeLabel.text = String(format: "%.2f", curTime)
-        playProgressView.progress = Float(curTime)/duration/changedRate
+        playProgressView.progress = Float(curTime)/duration
     }
+    
+    // MARK : Get current time of Audio - playing now
     
     func currentTime() -> TimeInterval{
         if let lastRenderTime = self.audioPlayerNode.lastRenderTime, let playerTime = self.audioPlayerNode.playerTime(forNodeTime: lastRenderTime) {
@@ -131,17 +137,23 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
         return 0
     }
     
-    func pauseAudio() -> AVAudioTime {
-        let playerTime: AVAudioTime = audioPlayerNode.playerTime(forNodeTime: audioPlayerNode.lastRenderTime!)!
+    // MARK : Pause Audio
+    
+    func pauseAudio(){
         audioPlayerNode.pause()
-        configureUI(.pausePlaying)
-        return playerTime
+        pvTimer.invalidate()
+        configureUI(.pause)
     }
     
-    func resumeAudio(resumeTime: AVAudioTime){
-        audioPlayerNode.play(at: resumeTime)
+    // MARK : Resume Audio
+    
+    func resumeAudio(){
+        audioPlayerNode.play()
+        pvTimer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updatePlayTime), userInfo: nil, repeats: true)
         configureUI(.playing)
     }
+    
+    //MARK : Stop Audio
     
     func stopAudio() {
         
@@ -182,12 +194,17 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
             startButton.isEnabled = true
             pauseButton.isEnabled = false
             stopButton.isEnabled = false
-        case .pausePlaying:
+        case .pauseAndPlaying:
+            pauseButton.isEnabled = false
+            startButton.isEnabled = true
+        case .pause:
             pauseButton.isEnabled = false
             startButton.isEnabled = true
         }
     }
 
+    // MARK : Show Alert
+    
     func showAlert(_ title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Alerts.DismissAlert, style: .default, handler: nil))

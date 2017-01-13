@@ -170,7 +170,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="100.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Idn-TK-r1s" userLabel="settingLabel">
-                                                <rect key="frame" x="144" y="72" width="55" height="21"/>
+                                                <rect key="frame" x="144" y="72.5" width="55" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -197,16 +197,16 @@
                                                         <rect key="frame" x="0.0" y="50.5" width="343" height="50"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Slow" translatesAutoresizingMaskIntoConstraints="NO" id="ZPZ-BW-ogt">
-                                                                <rect key="frame" x="0.0" y="0.0" width="50.5" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.5" width="51" height="50"/>
                                                             </imageView>
                                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="4np-8o-g6R" userLabel="changeSpeedSlider">
-                                                                <rect key="frame" x="48.5" y="0.0" width="246.5" height="51"/>
+                                                                <rect key="frame" x="49" y="0.5" width="246" height="51"/>
                                                                 <connections>
                                                                     <action selector="changeSpeedSlider:" destination="NwJ-gm-OUa" eventType="valueChanged" id="Uvq-Ag-U4N"/>
                                                                 </connections>
                                                             </slider>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fast" translatesAutoresizingMaskIntoConstraints="NO" id="xOp-s2-ocT">
-                                                                <rect key="frame" x="293" y="0.0" width="50" height="50"/>
+                                                                <rect key="frame" x="293" y="0.5" width="50" height="50"/>
                                                             </imageView>
                                                         </subviews>
                                                         <constraints>
@@ -242,10 +242,10 @@
                                                         <rect key="frame" x="0.0" y="50.5" width="343" height="50"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LowPitch" translatesAutoresizingMaskIntoConstraints="NO" id="eHa-mx-qGn">
-                                                                <rect key="frame" x="0.0" y="0.5" width="50.5" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.5" width="51" height="50"/>
                                                             </imageView>
                                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="BhT-cU-lyA" userLabel="changePitchSlider">
-                                                                <rect key="frame" x="48.5" y="0.5" width="246.5" height="51"/>
+                                                                <rect key="frame" x="49" y="0.5" width="246" height="51"/>
                                                                 <connections>
                                                                     <action selector="changePitchSlider:" destination="NwJ-gm-OUa" eventType="valueChanged" id="IUL-BE-GZG"/>
                                                                 </connections>
@@ -287,7 +287,7 @@
                                                         <rect key="frame" x="0.0" y="50.5" width="343" height="50"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxE-Ye-1sW" userLabel="echoButton">
-                                                                <rect key="frame" x="0.0" y="0.0" width="50.5" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="51" height="50"/>
                                                                 <state key="normal" image="Echo"/>
                                                                 <state key="selected" image="EchoClicked"/>
                                                                 <connections>
@@ -328,21 +328,21 @@
                                                 <rect key="frame" x="8" y="36" width="30" height="30"/>
                                                 <state key="normal" title="Play"/>
                                                 <connections>
-                                                    <action selector="playButton:" destination="NwJ-gm-OUa" eventType="touchUpInside" id="CHp-gI-84o"/>
+                                                    <action selector="playButtonClicked:" destination="NwJ-gm-OUa" eventType="touchUpInside" id="gMX-NH-3GD"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mB3-xA-0gU" userLabel="pauseButton">
                                                 <rect key="frame" x="151" y="36" width="42" height="30"/>
                                                 <state key="normal" title="Pause"/>
                                                 <connections>
-                                                    <action selector="pauseButton:" destination="NwJ-gm-OUa" eventType="touchUpInside" id="u5h-gE-ZCE"/>
+                                                    <action selector="pauseButtonClicked:" destination="NwJ-gm-OUa" eventType="touchUpInside" id="GyU-oH-1et"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1M-bo-dfD" userLabel="stopButton">
                                                 <rect key="frame" x="303" y="36" width="32" height="30"/>
                                                 <state key="normal" title="Stop"/>
                                                 <connections>
-                                                    <action selector="stopButton:" destination="NwJ-gm-OUa" eventType="touchUpInside" id="T2d-ls-mOY"/>
+                                                    <action selector="stopButtonClicked:" destination="NwJ-gm-OUa" eventType="touchUpInside" id="5pl-As-ohn"/>
                                                 </connections>
                                             </button>
                                         </subviews>
