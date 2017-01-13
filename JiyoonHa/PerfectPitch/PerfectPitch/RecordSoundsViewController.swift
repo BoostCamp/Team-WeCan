@@ -20,7 +20,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.stopRecordingButton.isEnabled = false
+        self.stopRecordingButton.isEnabled = false  //setting stop button
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,15 +29,15 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
 
     @IBAction func recordAudio(_ sender: Any) {
+        //setting label and button
         recordingLabel.text = "Recording in Progress"
         self.stopRecordingButton.isEnabled = true
         self.recordingButton.isEnabled = false
         
-        let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true)[0] as String
-        let recordingName = "recordedVoice.wav"
+        let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true)[0] as String    //path for recorded audio
+        let recordingName = "recordedVoice.wav" //recorded audio file name
         let pathArray = [dirPath, recordingName]
         let filePath = URL(string: pathArray.joined(separator: "/"))
-        //print(filePath)
         
         let session = AVAudioSession.sharedInstance()
         try! session.setCategory(AVAudioSessionCategoryPlayAndRecord, with:AVAudioSessionCategoryOptions.defaultToSpeaker)
@@ -45,23 +45,24 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         try! audioRecorder = AVAudioRecorder(url: filePath!, settings: [:])
         audioRecorder.delegate = self
         audioRecorder.isMeteringEnabled = true
+        
+        //recording
         audioRecorder.prepareToRecord()
         audioRecorder.record()
     }
 
     @IBAction func stopRecording(_ sender: Any) {
-        //print("Stop Recording button was pressed")
+        //setting label and button
         recordingButton.isEnabled = true
         self.stopRecordingButton.isEnabled = false
         self.recordingLabel.text = "Tap to Record"
         
-        audioRecorder.stop()
+        audioRecorder.stop()    //stop recording
         let audioSession = AVAudioSession.sharedInstance()
         try! audioSession.setActive(false)
     }
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        //print("finished recording")
         if flag
         {
             performSegue(withIdentifier: "stopRecording", sender: audioRecorder.url)

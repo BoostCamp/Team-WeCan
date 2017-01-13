@@ -36,12 +36,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCw-i3-kpF">
-                                <rect key="frame" x="141" y="472" width="92" height="91"/>
+                                <rect key="frame" x="155" y="460" width="64" height="64"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="HwG-sa-IVn"/>
-                                    <constraint firstAttribute="height" constant="91" id="RZ3-Gd-A09"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="bXN-Kj-wrp"/>
-                                    <constraint firstAttribute="width" constant="92" id="geu-Ic-ajD"/>
+                                    <constraint firstAttribute="height" constant="64" id="RZ3-Gd-A09"/>
+                                    <constraint firstAttribute="width" constant="64" id="geu-Ic-ajD"/>
                                 </constraints>
                                 <state key="normal" title="Stop Recording" image="Stop"/>
                                 <connections>
@@ -56,7 +54,7 @@
                             <constraint firstItem="mRZ-OK-gSv" firstAttribute="top" secondItem="TeD-hh-fb8" secondAttribute="bottom" constant="8" id="gBP-4x-vqN"/>
                             <constraint firstItem="jCw-i3-kpF" firstAttribute="centerX" secondItem="mRZ-OK-gSv" secondAttribute="centerX" id="gj4-JW-yEd"/>
                             <constraint firstItem="TeD-hh-fb8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jDc-oM-SDX"/>
-                            <constraint firstItem="jCw-i3-kpF" firstAttribute="top" secondItem="mRZ-OK-gSv" secondAttribute="bottom" constant="32" id="uDz-NS-bJf"/>
+                            <constraint firstItem="jCw-i3-kpF" firstAttribute="top" secondItem="mRZ-OK-gSv" secondAttribute="bottom" constant="20" id="uDz-NS-bJf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rbH-40-Xo4"/>
