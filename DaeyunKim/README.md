@@ -2,7 +2,7 @@
 음성을 녹음하고 6가지의 음향효과와 함께 녹음된 파일을 재생하는 어플리케이션.
 
 ## 시연
-[![ScreenShot](https://github.com/BoostCamp/Team-WeCan/blob/master/DaeyunKim/PitchPerfectImage/image7)](https://youtu.be/4ZjG89FdUS4)
+[![ScreenShot](https://github.com/BoostCamp/Team-WeCan/blob/master/DaeyunKim/PitchPerfectImage/image7.png)](https://youtu.be/4ZjG89FdUS4)
 
 ## 기본기능 - 녹음, 음향효과
 - Slow
@@ -30,11 +30,11 @@
 
 ## 스크린샷
 <img src="https://github.com/BoostCamp/Team-WeCan/blob/master/DaeyunKim/PitchPerfectImage/image1.png" width="280">
-<img src="https://github.com/BoostCamp/Team-WeCan/blob/master/DaeyunKim/PitchPerfectImage/image2" width="280">
-<img src="https://github.com/BoostCamp/Team-WeCan/blob/master/DaeyunKim/PitchPerfectImage/image3" width="280">
-<img src="https://github.com/BoostCamp/Team-WeCan/blob/master/DaeyunKim/PitchPerfectImage/image4" width="280">
-<img src="https://github.com/BoostCamp/Team-WeCan/blob/master/DaeyunKim/PitchPerfectImage/image5" width="280">
-<img src="https://github.com/BoostCamp/Team-WeCan/blob/master/DaeyunKim/PitchPerfectImage/image6" width="280">
+<img src="https://github.com/BoostCamp/Team-WeCan/blob/master/DaeyunKim/PitchPerfectImage/image2.png" width="280">
+<img src="https://github.com/BoostCamp/Team-WeCan/blob/master/DaeyunKim/PitchPerfectImage/image3.png" width="280">
+<img src="https://github.com/BoostCamp/Team-WeCan/blob/master/DaeyunKim/PitchPerfectImage/image4.png" width="280">
+<img src="https://github.com/BoostCamp/Team-WeCan/blob/master/DaeyunKim/PitchPerfectImage/image5.png" width="280">
+<img src="https://github.com/BoostCamp/Team-WeCan/blob/master/DaeyunKim/PitchPerfectImage/image6.png" width="280">
 
 ## Author
 Daeyun Ethan Kim
