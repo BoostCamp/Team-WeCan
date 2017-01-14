@@ -10,7 +10,7 @@ PitchPerfect Project
 
 ## 기능
 
-#### 기본 기능
+### Features
 
 - Slow
 - Fast
@@ -19,7 +19,7 @@ PitchPerfect Project
 - Echo
 - Reverb
 
-#### Kick
+### Kick
 
 - 음성 인식
   - Naver 음성인식 API를 사용함
@@ -28,6 +28,6 @@ PitchPerfect Project
 - 일시정지 / 다시재생
   - 오디오가 재생되고 있을 때 일시정지를 하거나, 다시 재생을 할 수 있음
 
-#### Videl
+### Video
 
 [Video](./static/songyunseop.mov)
