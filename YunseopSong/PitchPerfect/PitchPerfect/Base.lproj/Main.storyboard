@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -201,12 +202,27 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SWz-V4-3G8">
                                         <rect key="frame" x="0.0" y="435" width="343" height="64"/>
                                         <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjw-KY-xh9">
+                                                <rect key="frame" x="0.0" y="22" width="51.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yMP-PK-gXP">
-                                                <rect key="frame" x="0.0" y="31" width="343" height="2"/>
+                                                <rect key="frame" x="51.5" y="31" width="240" height="2"/>
                                             </progressView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GM1-y3-CtP">
+                                                <rect key="frame" x="291.5" y="22" width="51.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="3lX-gv-DXd"/>
+                                            <constraint firstItem="wjw-KY-xh9" firstAttribute="width" secondItem="SWz-V4-3G8" secondAttribute="width" multiplier="0.15" id="6Jf-M3-nOg"/>
+                                            <constraint firstItem="yMP-PK-gXP" firstAttribute="centerX" secondItem="SWz-V4-3G8" secondAttribute="centerX" id="8uw-J1-L44"/>
+                                            <constraint firstItem="GM1-y3-CtP" firstAttribute="width" secondItem="wjw-KY-xh9" secondAttribute="width" id="cg3-GT-6qo"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Tcr-f7-xYZ">
@@ -264,11 +280,13 @@
                         <outlet property="pauseButton" destination="og2-c3-FGP" id="yWh-2w-VUq"/>
                         <outlet property="playButton" destination="rgd-7t-OKR" id="Oby-Xx-OCm"/>
                         <outlet property="progressBar" destination="yMP-PK-gXP" id="ieH-gH-e4y"/>
+                        <outlet property="progressLabel" destination="wjw-KY-xh9" id="2BH-SC-T24"/>
                         <outlet property="rabbitButton" destination="gGs-QR-q0f" id="mbO-Iu-Aiv"/>
                         <outlet property="resultView" destination="6B8-Tn-DWr" id="z5q-xL-SRg"/>
                         <outlet property="reverbButton" destination="Een-Va-ABI" id="YAp-v2-8gT"/>
                         <outlet property="snailButton" destination="9lJ-JE-hnU" id="5Lg-U4-gqi"/>
                         <outlet property="stopButton" destination="MFK-aY-exg" id="fgF-Em-Dfk"/>
+                        <outlet property="totalTimeLabel" destination="GM1-y3-CtP" id="aD3-IC-9o9"/>
                         <outlet property="vaderButton" destination="gim-dW-3iy" id="CAs-ak-Ve9"/>
                     </connections>
                 </viewController>

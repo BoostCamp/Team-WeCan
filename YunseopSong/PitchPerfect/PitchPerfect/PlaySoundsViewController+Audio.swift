@@ -39,7 +39,8 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
         do {
             audioFile = try AVAudioFile(forReading: recordedAudioURL as URL)
             self.totalTime = Double(self.audioFile.length) / Double(self.audioFile.processingFormat.sampleRate)
-            
+            totalTimeLabel.text = String(format: "%.2f", self.totalTime)
+
         } catch {
             showAlert(Alerts.AudioFileError, message: String(describing: error))
         }
@@ -114,7 +115,6 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
         do {
             try audioEngine.start()
             Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.renderProgress), userInfo: nil, repeats: true)
-//            self.progressBar.setProgress(Float(self.currentTime/self.totalTime), animated: false)
         } catch {
             showAlert(Alerts.AudioEngineError, message: String(describing: error))
             return
@@ -146,6 +146,8 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
         }
         
         currentTime = totalTime
+        progressLabel.text = String(format: "%.2f", self.totalTime)
+
         progressBar.setProgress(Float(1), animated: false)
         
         
@@ -270,6 +272,8 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
                 self.currentTime = Double(playerTime.sampleTime) / Double(playerTime.sampleRate)
                 
             }
+
+            progressLabel.text = String(format: "%.2f", self.currentTime)
             progressBar.setProgress(Float(currentTime/totalTime), animated: true)
 
         }

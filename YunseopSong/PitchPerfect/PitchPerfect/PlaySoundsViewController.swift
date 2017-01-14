@@ -24,6 +24,8 @@ class PlaySoundsViewController: UIViewController {
     @IBOutlet weak var genderButton: UIButton!
     @IBOutlet weak var resultView: UITextView!
     @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet weak var totalTimeLabel: UILabel!
     
     var recordedAudioURL:URL!
     var audioFile:AVAudioFile!
