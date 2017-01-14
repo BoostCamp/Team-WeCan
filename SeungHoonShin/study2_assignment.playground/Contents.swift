@@ -2,8 +2,7 @@
 
 import Cocoa
 
-var str = "Hello, playground"
-
+// TODO : 가수추가 재생횟수, 음악찾기
 
 protocol Playable {
     func play()
