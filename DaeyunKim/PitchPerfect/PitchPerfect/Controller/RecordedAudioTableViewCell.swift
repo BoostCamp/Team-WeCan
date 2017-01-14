@@ -8,6 +8,8 @@
 
 import UIKit
 
+// 녹음된 파일 셀 -> 사용자가 녹음된 파일을 선택 했을 때 델리게이트로 테이블 뷰로 전달
+
 protocol RecordedAudioTableViewCellDelegete: class {
     func selectAudio(_ sender: String)
 }
@@ -29,6 +31,8 @@ class RecordedAudioTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    // 녹음된 파일 버튼 클릭
     
     @IBAction func recordedAudioButtonSelected(_ sender: Any) {
         self.delegate?.selectAudio((recordedAudioButton.titleLabel?.text)!)

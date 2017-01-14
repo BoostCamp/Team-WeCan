@@ -8,10 +8,14 @@
 
 import UIKit
 
+// 녹음된 오디오 파일을 나타내주는 테이블 뷰
+
 class RecordedSoundsListTableViewController: UITableViewController, RecordedAudioTableViewCellDelegete {
     
     var cellCount: Int!
     var logData: Array<String>!
+    
+    // 녹음된 파일이 있는지 체크
     
     func checkFile() {
         let logFile = FileUtils(fileName: "logfile.csv")
@@ -73,6 +77,8 @@ class RecordedSoundsListTableViewController: UITableViewController, RecordedAudi
         return true
     }
     
+    // 밀어서 데이터 삭제
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
@@ -109,6 +115,8 @@ class RecordedSoundsListTableViewController: UITableViewController, RecordedAudi
             self.tableView.reloadData()
         }
     }
+    
+    // 델리게이션
     
     func selectAudio(_ sender: String) {
         let urlFile = FileUtils(fileName: "logfile.csv")

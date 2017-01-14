@@ -245,6 +245,7 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
         
     }
     
+    // duration, playtime 설정
     func updatePlayTime() {
         if audioPlayerNode.isPlaying {
             if let nodeTime: AVAudioTime = self.audioPlayerNode.lastRenderTime, let playerTime: AVAudioTime = self.audioPlayerNode.playerTime(forNodeTime: nodeTime) {

@@ -105,6 +105,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         stopRecordingButton.isEnabled = false
     }
     
+    // log파일 체크
     override func viewWillAppear(_ animated: Bool) {
         
         if !logFile.fileExists() {
