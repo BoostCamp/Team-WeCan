@@ -75,7 +75,6 @@ extension RecordSoundsViewController {
     func setupRecognitionButton() {
         let longpressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(recodeAudio(_:)))
         longpressRecognizer.minimumPressDuration = 1
-        self.naverButton.addGestureRecognizer(longpressRecognizer)
     }
     
     func setRecognitionButtonTitle(withText text: String, color: UIColor) {
