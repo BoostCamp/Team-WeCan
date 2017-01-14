@@ -118,7 +118,7 @@
                                                         </constraints>
                                                         <state key="normal" image="female"/>
                                                     </button>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="result" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6B8-Tn-DWr">
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="&quot;&quot;" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6B8-Tn-DWr">
                                                         <rect key="frame" x="80" y="0.0" width="263" height="64"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -198,8 +198,13 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SWz-V4-3G8">
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SWz-V4-3G8">
                                         <rect key="frame" x="0.0" y="435" width="343" height="64"/>
+                                        <subviews>
+                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yMP-PK-gXP">
+                                                <rect key="frame" x="0.0" y="31" width="343" height="2"/>
+                                            </progressView>
+                                        </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="3lX-gv-DXd"/>
                                         </constraints>
@@ -258,6 +263,7 @@
                         <outlet property="genderButton" destination="EpZ-WB-WpM" id="ZMZ-eU-1hv"/>
                         <outlet property="pauseButton" destination="og2-c3-FGP" id="yWh-2w-VUq"/>
                         <outlet property="playButton" destination="rgd-7t-OKR" id="Oby-Xx-OCm"/>
+                        <outlet property="progressBar" destination="yMP-PK-gXP" id="ieH-gH-e4y"/>
                         <outlet property="rabbitButton" destination="gGs-QR-q0f" id="mbO-Iu-Aiv"/>
                         <outlet property="resultView" destination="6B8-Tn-DWr" id="z5q-xL-SRg"/>
                         <outlet property="reverbButton" destination="Een-Va-ABI" id="YAp-v2-8gT"/>

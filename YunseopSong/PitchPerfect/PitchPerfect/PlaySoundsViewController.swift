@@ -23,6 +23,7 @@ class PlaySoundsViewController: UIViewController {
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var genderButton: UIButton!
     @IBOutlet weak var resultView: UITextView!
+    @IBOutlet weak var progressBar: UIProgressView!
     
     var recordedAudioURL:URL!
     var audioFile:AVAudioFile!
@@ -32,8 +33,9 @@ class PlaySoundsViewController: UIViewController {
     var resultGender: Int?
     var resultText: String?
     var totalTime: Double!
-    var currentTime: Double!
+    var currentTime: Double! = 0
     var currentTimer: Timer!
+
     
     enum ButtonType: Int {
         case slow = 0, fast, chipmunk, vader, echo, reverb
@@ -79,6 +81,7 @@ class PlaySoundsViewController: UIViewController {
             genderButton.setImage(UIImage(named: "female.png"), for: UIControlState.normal)
         }
         resultView.text = "\"\(resultText!)\""
+
 
     }
     

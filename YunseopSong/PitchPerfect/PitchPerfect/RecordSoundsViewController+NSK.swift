@@ -57,7 +57,6 @@ extension RecordSoundsViewController: NSKRecognizerDelegate {
     public func recognizer(_ aRecognizer: NSKRecognizer!, didReceive aResult: NSKRecognizedResult!) {
         print("Final result: \(aResult.gender.rawValue)")
         
-
         if let result = aResult.results.first as? String {
             resultText = result
             resultGender = aResult.gender.rawValue
@@ -67,9 +66,6 @@ extension RecordSoundsViewController: NSKRecognizerDelegate {
 
 
         }
-        
-
-        
         
     }
 }

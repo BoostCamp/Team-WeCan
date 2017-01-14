@@ -38,7 +38,7 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
         // initialize (recording) audio file
         do {
             audioFile = try AVAudioFile(forReading: recordedAudioURL as URL)
-            totalTime = Double(self.audioFile.length) / Double(self.audioFile.processingFormat.sampleRate)
+            self.totalTime = Double(self.audioFile.length) / Double(self.audioFile.processingFormat.sampleRate)
             
         } catch {
             showAlert(Alerts.AudioFileError, message: String(describing: error))
@@ -46,6 +46,8 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
     }
 
     func playSound(rate: Float? = nil, pitch: Float? = nil, echo: Bool = false, reverb: Bool = false) {
+        currentTime = 0
+        progressBar.setProgress(Float(0), animated: false)
 
         // initialize audio engine components
         audioEngine = AVAudioEngine()
@@ -102,7 +104,6 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
                     delayInSeconds = Double(self.audioFile.length - playerTime.sampleTime) / Double(self.audioFile.processingFormat.sampleRate)
                 }
             }
-            self.totalTime = delayInSeconds
             // schedule a stop timer for when audio finishes playing
             self.stopTimer = Timer(timeInterval: delayInSeconds, target: self, selector: #selector(PlaySoundsViewController.stopAudio), userInfo: nil, repeats: false)
             RunLoop.main.add(self.stopTimer!, forMode: RunLoopMode.defaultRunLoopMode)
@@ -112,6 +113,8 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
 
         do {
             try audioEngine.start()
+            Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.renderProgress), userInfo: nil, repeats: true)
+//            self.progressBar.setProgress(Float(self.currentTime/self.totalTime), animated: false)
         } catch {
             showAlert(Alerts.AudioEngineError, message: String(describing: error))
             return
@@ -137,6 +140,16 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
             audioEngine.stop()
             audioEngine.reset()
         }
+        
+        if let currentTimer = currentTimer {
+            currentTimer.invalidate()
+        }
+        
+        currentTime = totalTime
+        progressBar.setProgress(Float(1), animated: false)
+        
+        
+
     }
 
     // MARK: Connect List of Audio Nodes
@@ -238,12 +251,8 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
                     self.stopTimer = Timer(timeInterval: delayInSeconds, target: self, selector: #selector(PlaySoundsViewController.stopAudio), userInfo: nil, repeats: false)
                     RunLoop.main.add(self.stopTimer!, forMode: RunLoopMode.defaultRunLoopMode)
                 }
-
-                
             }
-            
         }
-
         
         do {
             try audioEngine.start()
@@ -253,6 +262,19 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
         }
         
         audioPlayerNode.play()
+    }
+    
+    func renderProgress() {
+        if audioPlayerNode.isPlaying {
+            if let nodeTime: AVAudioTime = self.audioPlayerNode.lastRenderTime, let playerTime: AVAudioTime = self.audioPlayerNode.playerTime(forNodeTime: nodeTime) {
+                self.currentTime = Double(playerTime.sampleTime) / Double(playerTime.sampleRate)
+                
+            }
+            progressBar.setProgress(Float(currentTime/totalTime), animated: true)
+
+        }
+
+       
     }
     
 }

@@ -31,11 +31,8 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     fileprivate let speechRecognizer: NSKRecognizer
 
     
-    // MARK: - init
     required init?(coder aDecoder: NSCoder) {
-        /*
-         *  NSKRecognizer를 초기화 하는데 필요한 NSKRecognizerConfiguration을 생성합니다.
-         */
+
         let configuration = NSKRecognizerConfiguration(clientID: ClientID)
         configuration?.canQuestionDetected = true
         configuration?.epdType = .manual
@@ -90,8 +87,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        print("test")
-//        performSegue(withIdentifier: "stopRecording", sender: audioRecorder.url)
+        print("success recording")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
